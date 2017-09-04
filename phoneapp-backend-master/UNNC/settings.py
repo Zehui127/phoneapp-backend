@@ -128,12 +128,21 @@ MEDIA_URL = '/media/'
 
 #https://github.com/ottoyiu/django-cors-headers/
 CORS_ORIGIN_ALLOW_ALL = True
-#EMAIL_USE_SSL = True   
-EMAIL_USE_TLS = True   #是否使用TLS安全传输协议
-EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp-mail.outlook.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'zehui127@gmail.com'
-EMAIL_HOST_PASSWORD = '*******'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  #email后端
+EMAIL_HOST_USER = 'zehui127@outlook.com'
+EMAIL_HOST_PASSWORD = '******'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+ 
+#EMAIL_USE_TLS = True   #是否使用TLS安全传输协议
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 587
+#EMAIL_HOST_USER = 'zehui127@gmail.com'
+#EMAIL_HOST_PASSWORD = 'lz127127'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  #email后端
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

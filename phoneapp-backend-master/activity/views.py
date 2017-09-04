@@ -75,7 +75,7 @@ class UserInformation(APIView):
             })
             to_email = email
             core_email = EmailMessage(
-                mail_subject, message, to=[to_email]
+                mail_subject, message, "zehui127@outlook.com",to=[to_email]
             )
             core_email.send()
             #adding part 
