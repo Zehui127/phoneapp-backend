@@ -5,7 +5,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from activity import views
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.conf.urls import include
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -15,7 +15,8 @@ urlpatterns = [
     url(r'^login/$', views.UserInformation.as_view()),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
-
+    url(r'^api-auth/', include('rest_framework.urls',
+                               namespace='rest_framework')),
 ]
 
 if settings.DEBUG:
