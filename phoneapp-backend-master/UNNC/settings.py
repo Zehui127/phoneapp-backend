@@ -25,7 +25,7 @@ SECRET_KEY = 'zdkqp8g(n62n+t-82cxn!^pqa32*(9nb__-_vxsnf5a7p173a4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.102','192.168.0.101']
+ALLOWED_HOSTS = ['192.168.0.102','192.168.0.101','192.168.1.104']
 
 
 # Application definition
@@ -40,7 +40,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'activity.apps.ActivityConfig',
     'corsheaders',
+    'rest_framework.authtoken',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+    )
+ }
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

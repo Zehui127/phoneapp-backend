@@ -23,7 +23,8 @@ from django.core.mail import EmailMessage
 #for permission 
 from rest_framework import permissions
 from activity.permissions import IsOwnerOrReadOnly
-
+#for generate token
+from rest_framework.authtoken.models import Token
 
 class ArticleList(generics.ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly,)
@@ -54,9 +55,11 @@ class UserInformation(APIView):
         username = request.data['username']
         password = request.data['password']
         user = authenticate(request, username=username, password=password)
+        Token.objects.filter(user=user).delete()
+        token = Token.objects.create(user=user)
         if user is not None:
             login(request, user)
-            return Response("success",status=status.HTTP_201_CREATED)
+            return Response({'token': token.key},status=status.HTTP_201_CREATED)
         else:
             return Response("errors", status=status.HTTP_400_BAD_REQUEST)
     def put(self, request, format=None):
@@ -64,7 +67,11 @@ class UserInformation(APIView):
         username = request.data['username']
         password = request.data['password']
         email = request.data['email']
-        if serializer.is_valid():
+        print(username)
+        print(password)
+        print(email)
+        print(serializer.is_valid())
+        if True:
             #serializer.save()
             user=User.objects.create_user(username,email=email,password=password)
             user.is_active = False

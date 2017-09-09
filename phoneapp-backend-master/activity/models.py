@@ -1,4 +1,7 @@
 from django.db import models
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Article(models.Model):
     title = models.CharField(max_length=255)
@@ -11,5 +14,7 @@ class Article(models.Model):
     '''
     def __str__(self):
         return self.title
+
+        
 
 		

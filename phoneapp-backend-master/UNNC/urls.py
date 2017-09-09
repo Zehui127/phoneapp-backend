@@ -6,7 +6,7 @@ from activity import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
-
+from rest_framework.authtoken import views as rest_view
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^activity/$', views.ArticleList.as_view()),
@@ -17,6 +17,7 @@ urlpatterns = [
         views.activate, name='activate'),
     url(r'^api-auth/', include('rest_framework.urls',
                                namespace='rest_framework')),
+    url(r'^api-token-auth/', rest_view.obtain_auth_token),                           
 ]
 
 if settings.DEBUG:

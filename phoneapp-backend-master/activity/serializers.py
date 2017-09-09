@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Article
 from django.contrib.auth.models import User
+#for generating token
+
 
 class ArticleSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -15,7 +17,7 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ('id', 'title', 'thumbnail', 'body','owner')
-
+        
 
 		
 class UserSerializer(serializers.ModelSerializer):
